@@ -28,7 +28,7 @@ public class SecurityConfig {
         return http
                 .authorizeExchange()
                 .pathMatchers("/api/auth/**").permitAll()
-                .pathMatchers("/public/**").permitAll()
+                .pathMatchers("/api/users/**").hasRole("USER")
                 .anyExchange().authenticated()
                 .and()
                 .addFilterAt(jwtWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
